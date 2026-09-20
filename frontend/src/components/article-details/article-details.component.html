@@ -21,7 +21,10 @@
         <div class="claps-comments-topics d-flex justify-content-between align-items-center">
           <div class="d-flex gap-4">
             <div class="d-flex gap-1">
-              <img src="../../assets/svg/clap.svg" alt="Two hands clapping icon.">
+              <button type="button" (click)="onClapClick()" class="clap-btn">
+                <img src="../../assets/svg/clap.svg" alt="Two hands clapping icon.">
+              </button>
+
               <p>
                 {{ article.claps }}
               </p>

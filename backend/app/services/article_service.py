@@ -212,3 +212,8 @@ class ArticleService:
         read_time = words / 200
 
         return max(1, round(read_time))
+
+    @staticmethod
+    def clap(slug: str):
+        article = ArticleRepository.get_by_slug(slug);
+        print('test>>> ', article)

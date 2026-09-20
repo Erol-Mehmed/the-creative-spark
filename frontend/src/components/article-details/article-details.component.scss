@@ -80,7 +80,14 @@
         }
 
         img {
+          display: block;
           width: 18px;
+        }
+
+        .clap-btn {
+          border: none;
+          padding: 0;
+          background: none;
         }
       }
     }

@@ -23,7 +23,7 @@ class ArticleListResource(Resource):
 
     def get(self):
         topic = request.args.get('topic')
-        
+
         if topic:
             articles = ArticleService.get_by_topic(topic)
         else:
@@ -155,6 +155,7 @@ class ArticleDetailResource(Resource):
                 "message": str(error),
             }, 403
 
+
 class AuthorArticleListResource(Resource):
 
     def get(self):
@@ -168,7 +169,7 @@ class AuthorArticleListResource(Resource):
             user = UserRepository.get_by_username(username)
             if not user:
                 raise UserNotFoundError("User not found.")
-                
+
             articles = ArticleService.get_by_author(user.id)
 
             return {
@@ -256,3 +257,22 @@ class ArticleManageResource(Resource):
             return {
                 "message": str(error),
             }, 403
+
+
+class ArticleClapResource(Resource):
+    @jwt_required()
+    def post(self, slug):
+        try:
+            ArticleService.clap(slug)
+
+            return "", 200
+
+        except ArticleNotFoundError as error:
+            return {
+                "message": str(error),
+            }, 404
+
+        except ArticlePermissionDeniedError as error:
+            return {
+                "message": str(error),
+            }, 404

@@ -1,6 +1,6 @@
 from app.resources.article import (
     ArticleDetailResource,
-    ArticleListResource, AuthorArticleListResource,
+    ArticleListResource, AuthorArticleListResource, ArticleClapResource,
 )
 from app.resources.auth import (
     LoginResource,
@@ -66,3 +66,7 @@ def register_routes(api):
         "/api/topics",
     )
 
+    api.add_resource(
+        ArticleClapResource,
+        "/api/articles/clap",
+    )

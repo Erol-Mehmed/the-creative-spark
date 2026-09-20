@@ -6,7 +6,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import pytest
 from flask import Flask
-from app.config import Config
 from app.extensions import db as _db, jwt, bcrypt, migrate
 from flask_cors import CORS
 from flask_restful import Api

@@ -50,6 +50,10 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   editArticle() {
-    this.router.navigate(['/edit', this.article.slug]);
+    this.router.navigate(['/edit', this.article.slug]).then(r => r);
+  }
+
+  onClapClick() {
+    this.http.post(`/api/articles/${article_slug}/clap`)
   }
 }

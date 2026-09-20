@@ -72,3 +72,6 @@ class ArticleRepository:
     def delete(article: Article) -> None:
         db.session.delete(article)
         db.session.commit()
+
+    # @staticmethod
+    # def clap(slug):
