@@ -118,9 +118,3 @@ class ArticleResponseSchema(Schema):
         if obj.topics:
             return [topic.name for topic in obj.topics]
         return []
-
-    def get_author_image(self, obj):
-        return obj.author.image_url if obj.author else None
-
-    def get_author_slug(self, obj):
-        return obj.author.username if obj.author else ''

@@ -18,14 +18,9 @@
   --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   margin: 0;
-  font-family: var(--main-font-family);
+  font-family: var(--main-font-family), sans-serif;
   color: var(--main-black);
   background: linear-gradient(180deg, #f5f9ff 0%, #f8f8ff 50%, #ffffff 100%);
 }

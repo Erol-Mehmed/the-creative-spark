@@ -263,9 +263,9 @@ class ArticleClapResource(Resource):
     @jwt_required()
     def post(self, slug):
         try:
-            ArticleService.clap(slug)
+            claps = ArticleService.clap(slug)
 
-            return "", 200
+            return claps, 200
 
         except ArticleNotFoundError as error:
             return {

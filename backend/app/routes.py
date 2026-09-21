@@ -68,5 +68,5 @@ def register_routes(api):
 
     api.add_resource(
         ArticleClapResource,
-        "/api/articles/clap",
+        "/api/articles/<string:slug>/clap",
     )

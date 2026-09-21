@@ -73,5 +73,10 @@ class ArticleRepository:
         db.session.delete(article)
         db.session.commit()
 
-    # @staticmethod
-    # def clap(slug):
+    @staticmethod
+    def clap(slug):
+        article = ArticleRepository.get_by_slug(slug)
+        article.claps += 1
+        db.session.commit()
+
+        return article.claps

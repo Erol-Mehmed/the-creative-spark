@@ -23,16 +23,17 @@ export class ArticleDetailsComponent implements OnInit {
   article: any = null;
 
   currentUser: any = null;
-  loading = true;
+  loading: boolean = true;
+  article_slug: string = "";
 
   ngOnInit() {
     this.userService.me$()?.subscribe({
       next: (user) => this.currentUser = user,
     });
 
-    const article_slug = this.route.snapshot.params['article_slug'];
+    this.article_slug = this.route.snapshot.params['article_slug'];
 
-    this.http.get(`/api/articles/${article_slug}`).subscribe({
+    this.http.get(`/api/articles/${(this.article_slug)}`).subscribe({
       next: (data: any) => {
         this.article = data;
       },
@@ -54,6 +55,16 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   onClapClick() {
-    this.http.post(`/api/articles/${article_slug}/clap`)
+    this.http.post(`/api/articles/${(this.article_slug)}/clap`, "").subscribe({
+      next: (data: any) => {
+        return data.claps;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }

@@ -215,5 +215,4 @@ class ArticleService:
 
     @staticmethod
     def clap(slug: str):
-        article = ArticleRepository.get_by_slug(slug);
-        print('test>>> ', article)
+        return ArticleRepository.clap(slug)
