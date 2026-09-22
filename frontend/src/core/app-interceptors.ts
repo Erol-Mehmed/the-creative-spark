@@ -15,7 +15,7 @@ const Api_Url = environment.apiUrl;
 export class AppInterceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     if (req.url.startsWith('/api')) {
       const token = localStorage.getItem('access_token');
@@ -30,7 +30,7 @@ export class AppInterceptor implements HttpInterceptor {
           url: req.url.replace('/api', Api_Url),
           withCredentials: false,
           setHeaders: headers,
-        })
+        }),
       );
     }
 

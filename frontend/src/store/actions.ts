@@ -1,7 +1,10 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
 
 const actionTypes = {
-   setModalVersion: 'SET_MODAL_VERSION'
+  setModalVersion: 'SET_MODAL_VERSION',
 };
 
-export const setModalVersion = createAction(actionTypes.setModalVersion, props<{ currentModalVersion: string }>());
+export const setModalVersion = createAction(
+  actionTypes.setModalVersion,
+  props<{ currentModalVersion: string }>(),
+);

@@ -8,7 +8,7 @@ describe('MostLikedArticlesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MostLikedArticlesComponent]
+      declarations: [MostLikedArticlesComponent],
     });
     fixture = TestBed.createComponent(MostLikedArticlesComponent);
     component = fixture.componentInstance;

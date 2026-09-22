@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from 'src/shared/interfaces';
 
 @Injectable()
-export class UserService  {
-  user : User | null | undefined = null;
+export class UserService {
+  user: User | null | undefined = null;
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
@@ -23,7 +23,7 @@ export class UserService  {
     return this.http.post<User>(`/api/auth/register`, data);
   }
 
-  login$(data: { email: string; password: string; }) {
+  login$(data: { email: string; password: string }) {
     return this.http.post<{ access_token: string }>(`/api/auth/login`, data);
   }
 
@@ -34,7 +34,12 @@ export class UserService  {
     return this.http.post<{ image_url: string }>(`/api/uploads/users`, form);
   }
 
-  updateProfile(data: { first_name?: string; last_name?: string; bio?: string; image_url?: string; }) : Observable<User> {
+  updateProfile(data: {
+    first_name?: string;
+    last_name?: string;
+    bio?: string;
+    image_url?: string;
+  }): Observable<User> {
     return this.http.patch<User>(`/api/auth/me`, data);
   }
 

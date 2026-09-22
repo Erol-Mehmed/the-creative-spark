@@ -7,7 +7,12 @@
     <div class="mb-3">
       <label class="form-label">Image</label>
       <div class="d-flex align-items-center gap-3">
-        <img *ngIf="imagePreview" [src]="imagePreview" alt="preview" width="128" />
+        <img
+          *ngIf="imagePreview"
+          [src]="imagePreview"
+          alt="preview"
+          width="128"
+        />
         <input type="file" (change)="onFileChange($event)" accept="image/*" />
         <div *ngIf="uploading">Uploading...</div>
       </div>
@@ -32,20 +37,36 @@
           (click)="toggleTopic(topic.name)"
           [class.active]="isTopicSelected(topic.name)"
           class="btn btn-sm"
-          [ngClass]="isTopicSelected(topic.name) ? 'btn-primary' : 'btn-outline-secondary'"
+          [ngClass]="
+            isTopicSelected(topic.name)
+              ? 'btn-primary'
+              : 'btn-outline-secondary'
+          "
         >
           {{ topic.name }}
         </button>
       </div>
-      <small class="text-muted d-block mt-2">Selected: {{ selectedTopics.join(', ') || 'None' }}</small>
-      <small *ngIf="selectedTopics.length === 0" class="text-danger d-block mt-1">At least one topic is required.</small>
+      <small class="text-muted d-block mt-2"
+        >Selected: {{ selectedTopics.join(", ") || "None" }}</small
+      >
+      <small
+        *ngIf="selectedTopics.length === 0"
+        class="text-danger d-block mt-1"
+        >At least one topic is required.</small
+      >
     </div>
 
     <div class="mb-3">
       <label class="form-label">Content</label>
-      <textarea class="form-control" formControlName="content" rows="8"></textarea>
+      <textarea
+        class="form-control"
+        formControlName="content"
+        rows="8"
+      ></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="saving">{{ submitLabel }}</button>
+    <button type="submit" class="btn btn-primary" [disabled]="saving">
+      {{ submitLabel }}
+    </button>
   </form>
 </div>

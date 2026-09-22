@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthorComponent } from 'src/components/author/author.component';
 import { HomeComponent } from 'src/components/home/home.component';
-import { ArticleDetailsComponent } from "../components/article-details/article-details.component";
+import { ArticleDetailsComponent } from '../components/article-details/article-details.component';
 import { ArticleEditorComponent } from 'src/components/article-editor/article-editor.component';
 
 const routes: Routes = [
@@ -15,7 +15,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

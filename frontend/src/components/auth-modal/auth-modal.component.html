@@ -12,9 +12,21 @@
       class="d-flex flex-column align-items-center"
     >
       <div class="input-message">
-        <input formControlName="name" placeholder="Username" type="text" [ngClass]="{'border-danger border-2': registerForm.get('name')?.invalid && registerForm.get('name')?.touched}" />
+        <input
+          formControlName="name"
+          placeholder="Username"
+          type="text"
+          [ngClass]="{
+            'border-danger border-2':
+              registerForm.get('name')?.invalid &&
+              registerForm.get('name')?.touched,
+          }"
+        />
         <div
-          *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+          *ngIf="
+            registerForm.get('name')?.invalid &&
+            registerForm.get('name')?.touched
+          "
           class="invalid-input"
         >
           <p *ngIf="!registerForm.get('name')?.hasError('whitespace')">
@@ -29,7 +41,8 @@
         <input formControlName="email" placeholder="Email" type="text" />
         <div
           *ngIf="
-            registerForm.get('email')?.invalid && registerForm.get('email')?.touched
+            registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched
           "
           class="invalid-input"
         >
@@ -46,7 +59,7 @@
         <div
           *ngIf="
             registerForm.get('password')?.invalid &&
-            (registerForm.get('password')?.touched)
+            registerForm.get('password')?.touched
           "
           class="invalid-input"
         >
@@ -68,22 +81,21 @@
         <div
           *ngIf="
             registerForm.get('confirmPassword')?.invalid &&
-            (registerForm.get('confirmPassword')?.touched)
+            registerForm.get('confirmPassword')?.touched
           "
           class="invalid-input"
         >
           <p>Passwords does not match.</p>
         </div>
       </div>
-      <button type="submit" [disabled]="registerForm.invalid">
-        Sign Up
-      </button>
+      <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
     </form>
 
     <ng-template #elseBlock>
-      <form [formGroup]="loginForm"
-          (ngSubmit)="onSubmit(loginForm)"
-          class="d-flex flex-column align-items-center"
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit(loginForm)"
+        class="d-flex flex-column align-items-center"
       >
         <div class="input-message">
           <input formControlName="email" placeholder="Email" type="text" />
@@ -106,7 +118,7 @@
           <div
             *ngIf="
               loginForm.get('password')?.invalid &&
-              (loginForm.get('password')?.touched)
+              loginForm.get('password')?.touched
             "
             class="invalid-input"
           >
@@ -118,9 +130,7 @@
             </p>
           </div>
         </div>
-        <button type="submit" [disabled]="loginForm.invalid">
-          Sign In
-        </button>
+        <button type="submit" [disabled]="loginForm.invalid">Sign In</button>
       </form>
     </ng-template>
 

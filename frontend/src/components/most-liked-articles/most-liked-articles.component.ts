@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {FormatDatePipe} from "../../shared/pipes/format-date.pipe";
+import { FormatDatePipe } from '../../shared/pipes/format-date.pipe';
 
 @Component({
   selector: 'app-most-liked-articles',
@@ -9,7 +9,10 @@ import {FormatDatePipe} from "../../shared/pipes/format-date.pipe";
   providers: [FormatDatePipe],
 })
 export class MostLikedArticlesComponent implements OnInit {
-  constructor(private http: HttpClient, private formatDatePipe: FormatDatePipe) {}
+  constructor(
+    private http: HttpClient,
+    private formatDatePipe: FormatDatePipe,
+  ) {}
 
   mostLikedArticles: any = [];
 

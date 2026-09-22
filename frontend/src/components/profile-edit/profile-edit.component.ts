@@ -6,7 +6,7 @@ import { UserService } from 'src/core/services/user.service';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.scss']
+  styleUrls: ['./profile-edit.component.scss'],
 })
 export class ProfileEditComponent implements OnInit {
   form: FormGroup;
@@ -63,7 +63,7 @@ export class ProfileEditComponent implements OnInit {
       error: (err) => {
         this.error = err?.error?.message || 'Upload failed.';
       },
-      complete: () => this.uploading = false,
+      complete: () => (this.uploading = false),
     });
   }
 

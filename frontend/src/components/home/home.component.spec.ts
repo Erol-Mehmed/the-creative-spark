@@ -21,7 +21,7 @@ describe('HomeComponent', () => {
           useValue: { navigate: () => Promise.resolve(true) },
         },
       ],
-      declarations: [HomeComponent]
+      declarations: [HomeComponent],
     });
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;

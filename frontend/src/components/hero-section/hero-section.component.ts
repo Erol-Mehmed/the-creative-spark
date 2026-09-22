@@ -6,7 +6,7 @@ import { AuthModalComponent } from '../auth-modal/auth-modal.component';
 @Component({
   selector: 'app-hero-section',
   templateUrl: './hero-section.component.html',
-  styleUrls: ['./hero-section.component.scss']
+  styleUrls: ['./hero-section.component.scss'],
 })
 export class HeroSectionComponent implements OnInit {
   currentUser: any = null;
@@ -36,7 +36,10 @@ export class HeroSectionComponent implements OnInit {
   }
 
   openAuthModal() {
-    const modalRef = this.modalService.open(AuthModalComponent, { centered: true, size: 'lg' });
+    const modalRef = this.modalService.open(AuthModalComponent, {
+      centered: true,
+      size: 'lg',
+    });
     modalRef.componentInstance.modalVersion = 'getStarted';
 
     modalRef.result.then(

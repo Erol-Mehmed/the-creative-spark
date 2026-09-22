@@ -1,62 +1,90 @@
 <div
-  [ngClass]="{'container articles': true, 'author': authorArticles}"
+  [ngClass]="{ 'container articles': true, author: authorArticles }"
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50"
   (scrolled)="loadMoreArticles()"
 >
-  <div *ngIf="displayedArticles.length > 0; else noArticles" class="articles-wrapper d-flex flex-column align-items-center">
   <div
-    class="row col-12"
-    *ngFor="let article of displayedArticles; index as i"
+    *ngIf="displayedArticles.length > 0; else noArticles"
+    class="articles-wrapper d-flex flex-column align-items-center"
   >
-    <div class="article-wrapper d-flex align-items-center gap-3">
-      <div class="author-article-links col-8 d-flex flex-column mt-2">
-        <div
-          class="author-container d-flex align-items-center"
-          *ngIf="!authorArticles; else showAuthorArticles"
-        >
-          <img
-            [src]="article.authorImage ? article.authorImage : '../../assets/images/user-placeholder.jpg'"
-            alt="Article author."
+    <div
+      class="row col-12"
+      *ngFor="let article of displayedArticles; index as i"
+    >
+      <div class="article-wrapper d-flex align-items-center gap-3">
+        <div class="author-article-links col-8 d-flex flex-column mt-2">
+          <div
+            class="author-container d-flex align-items-center"
+            *ngIf="!authorArticles; else showAuthorArticles"
+          >
+            <img
+              [src]="
+                article.authorImage
+                  ? article.authorImage
+                  : '../../assets/images/user-placeholder.jpg'
+              "
+              alt="Article author."
+              role="button"
+              [routerLink]="article.authorSlug"
+            />
+            <a
+              class="name text-decoration-none"
+              [routerLink]="article.authorSlug"
+              >{{ article.authorName }}</a
+            >
+          </div>
+          <ng-template #showAuthorArticles>
+            <p class="published-date m-0">
+              Published on {{ article.createdAt | formatDate }}
+            </p>
+          </ng-template>
+          <div
+            class="article-link"
             role="button"
-            [routerLink]="article.authorSlug"
-          />
-          <a class="name text-decoration-none" [routerLink]="article.authorSlug">{{
-            article.authorName
-          }}</a>
+            [routerLink]="
+              authorArticles
+                ? ['/', article.authorSlug, article.slug]
+                : [article.authorSlug, article.slug]
+            "
+          >
+            <p class="title text-black fw-semibold mb-1">{{ article.title }}</p>
+            <p class="content m-0 overflow-hidden">{{ article.content }}</p>
+          </div>
+          <div class="date-read-time d-flex align-items-center mt-2">
+            <p class="date">{{ article.createdAt | formatDate }}</p>
+            <p class="mx-1">-</p>
+            <p class="read-time">{{ article.readTime }} min read</p>
+            <p class="mx-1">-</p>
+            <span
+              *ngFor="let topic of article.topics || [article.topic]"
+              class="badge bg-light text-dark me-2"
+            >
+              {{ topic }}
+            </span>
+          </div>
         </div>
-        <ng-template #showAuthorArticles>
-          <p class="published-date m-0">
-            Published on {{ article.createdAt | formatDate }}
-          </p>
-        </ng-template>
-        <div class="article-link" role="button" [routerLink]="authorArticles ? ['/', article.authorSlug, article.slug] : [article.authorSlug, article.slug]">
-          <p class="title text-black fw-semibold mb-1">{{ article.title }}</p>
-          <p class="content m-0 overflow-hidden">{{ article.content }}</p>
+        <div class="article-image">
+          <a
+            [routerLink]="
+              authorArticles
+                ? ['/', article.authorSlug, article.slug]
+                : [article.authorSlug, article.slug]
+            "
+          >
+            <img
+              [src]="
+                article.image
+                  ? article.image
+                  : '../../assets/images/article-placeholder.jpg'
+              "
+              alt="Article."
+            />
+          </a>
         </div>
-        <div class="date-read-time d-flex align-items-center mt-2">
-          <p class="date">{{ article.createdAt | formatDate }}</p>
-          <p class="mx-1">-</p>
-          <p class="read-time">{{ article.readTime }} min read</p>
-          <p class="mx-1">-</p>
-          <span 
-            *ngFor="let topic of (article.topics || [article.topic])"
-            class="badge bg-light text-dark me-2">
-            {{ topic }}
-          </span>
-        </div>
-      </div>
-      <div class="article-image">
-        <a [routerLink]="authorArticles ? ['/', article.authorSlug, article.slug] : [article.authorSlug, article.slug]">
-          <img
-            [src]="article.image ? article.image : '../../assets/images/article-placeholder.jpg'"
-            alt="Article."
-          />
-        </a>
       </div>
     </div>
-  </div>
   </div>
   <ng-template #noArticles>
     <div class="no-articles fs-3 fw-semibold">

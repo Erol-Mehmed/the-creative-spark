@@ -22,7 +22,7 @@ import { HeroSectionComponent } from 'src/components/hero-section/hero-section.c
 import { ArticleDetailsComponent } from 'src/components/article-details/article-details.component';
 import { ProfileEditComponent } from 'src/components/profile-edit/profile-edit.component';
 import { ArticleEditorComponent } from 'src/components/article-editor/article-editor.component';
-import { NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from '@angular/common';
 import { SharedModule } from 'src/shared/shared/shared.module';
 
 @NgModule({
@@ -40,20 +40,19 @@ import { SharedModule } from 'src/shared/shared/shared.module';
     ProfileEditComponent,
     ArticleEditorComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        StoreModule.forRoot(reducers),
-        ReactiveFormsModule,
-        HttpClientModule,
-        CoreModule,
-        NgbModule,
-        InfiniteScrollModule,
-        NgOptimizedImage,
-        SharedModule,
-    ],
-  bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers),
+    ReactiveFormsModule,
+    HttpClientModule,
+    CoreModule,
+    NgbModule,
+    InfiniteScrollModule,
+    NgOptimizedImage,
+    SharedModule,
+  ],
+  bootstrap: [AppComponent],
 })
-
 export class AppModule {}

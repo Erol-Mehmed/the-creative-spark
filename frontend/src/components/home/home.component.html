@@ -1,8 +1,18 @@
 <app-hero-section class="row"></app-hero-section>
-<app-most-liked-articles *ngIf="hasArticles" class="row"></app-most-liked-articles>
+<app-most-liked-articles
+  *ngIf="hasArticles"
+  class="row"
+></app-most-liked-articles>
 <div class="container">
   <div class="row">
-    <app-articles-list class="col-8" [selectedTopic]="selectedTopic"></app-articles-list>
-    <app-topics class="col-4" [selectedTopic]="selectedTopic" (topicChange)="onTopicChange($event)"></app-topics>
+    <app-articles-list
+      class="col-8"
+      [selectedTopic]="selectedTopic"
+    ></app-articles-list>
+    <app-topics
+      class="col-4"
+      [selectedTopic]="selectedTopic"
+      (topicChange)="onTopicChange($event)"
+    ></app-topics>
   </div>
 </div>

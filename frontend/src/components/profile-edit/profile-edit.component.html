@@ -7,7 +7,14 @@
     <div class="mb-3">
       <label class="form-label">Profile image</label>
       <div class="d-flex align-items-center gap-3">
-        <img *ngIf="imagePreview" [src]="imagePreview" alt="preview" class="rounded-circle" width="64" height="64">
+        <img
+          *ngIf="imagePreview"
+          [src]="imagePreview"
+          alt="preview"
+          class="rounded-circle"
+          width="64"
+          height="64"
+        />
         <input type="file" (change)="onFileChange($event)" accept="image/*" />
         <div *ngIf="uploading">Uploading...</div>
       </div>
@@ -30,9 +37,14 @@
 
     <div class="d-flex gap-2">
       <button type="submit" class="btn btn-primary" [disabled]="saving">
-        {{ saving ? 'Saving...' : 'Save' }}
+        {{ saving ? "Saving..." : "Save" }}
       </button>
-      <button type="button" class="btn btn-outline-secondary" (click)="cancel()" [disabled]="saving">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="cancel()"
+        [disabled]="saving"
+      >
         Cancel
       </button>
     </div>

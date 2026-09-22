@@ -1,7 +1,13 @@
 <div class="most-liked container border-bottom">
   <div class="heading-image d-flex align-items-end">
-    <img class="border border-black rounded-circle" src="../../assets/svg/trending.svg" alt="Trending image.">
-    <h2 class="heading row fw-medium mb-0 ms-2">Trending on The Creative Spark</h2>
+    <img
+      class="border border-black rounded-circle"
+      src="../../assets/svg/trending.svg"
+      alt="Trending image."
+    />
+    <h2 class="heading row fw-medium mb-0 ms-2">
+      Trending on The Creative Spark
+    </h2>
   </div>
   <div class="articles row container">
     <div class="row">
@@ -12,10 +18,24 @@
         <p class="col-1 number">0{{ i + 1 }}</p>
         <div class="author-article-links">
           <div class="author-container">
-            <img [src]="article.authorImage ? article.authorImage : '../../assets/images/user-placeholder.jpg'" alt="Article author image." [routerLink]="article.authorSlug">
-            <a class="name" [routerLink]="article.authorSlug">{{ article.authorName }}</a>
+            <img
+              [src]="
+                article.authorImage
+                  ? article.authorImage
+                  : '../../assets/images/user-placeholder.jpg'
+              "
+              alt="Article author image."
+              [routerLink]="article.authorSlug"
+            />
+            <a class="name" [routerLink]="article.authorSlug">{{
+              article.authorName
+            }}</a>
           </div>
-          <a class="article" [routerLink]="[article.authorSlug, article.slug]">{{ article.title }}</a>
+          <a
+            class="article"
+            [routerLink]="[article.authorSlug, article.slug]"
+            >{{ article.title }}</a
+          >
           <div class="date-read-time">
             <p class="date">{{ article.createdAt | formatDate }}</p>
             <p class="hyphen">-</p>
@@ -33,10 +53,24 @@
         <p class="col-1 number">0{{ i + 4 }}</p>
         <div class="author-article-links">
           <div class="author-container">
-            <img [src]="article.authorImage ? article.authorImage : '../../assets/images/user-placeholder.jpg'" alt="Article author image." [routerLink]="article.authorSlug">
-            <a class="name" [routerLink]="article.authorSlug">{{ article.authorName }}</a>
+            <img
+              [src]="
+                article.authorImage
+                  ? article.authorImage
+                  : '../../assets/images/user-placeholder.jpg'
+              "
+              alt="Article author image."
+              [routerLink]="article.authorSlug"
+            />
+            <a class="name" [routerLink]="article.authorSlug">{{
+              article.authorName
+            }}</a>
           </div>
-          <a class="article" [routerLink]="[article.authorSlug, article.slug]">{{ article.title }}</a>
+          <a
+            class="article"
+            [routerLink]="[article.authorSlug, article.slug]"
+            >{{ article.title }}</a
+          >
           <div class="date-read-time">
             <p class="date">{{ article.createdAt | formatDate }}</p>
             <p class="hyphen">-</p>

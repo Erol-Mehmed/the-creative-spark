@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent implements OnInit {
   currentUser: any = null;
 
@@ -40,7 +39,10 @@ export class HeaderComponent implements OnInit {
   }
 
   openModal(modalVersion: string) {
-    const modalRef = this.modalService.open(AuthModalComponent, { centered: true, size: 'lg' });
+    const modalRef = this.modalService.open(AuthModalComponent, {
+      centered: true,
+      size: 'lg',
+    });
     modalRef.componentInstance.modalVersion = modalVersion;
 
     // Refresh user state when modal closes

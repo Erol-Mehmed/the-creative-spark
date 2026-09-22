@@ -1,63 +1,95 @@
 <div class="container" *ngIf="!loading">
   <div class="row header d-flex justify-content-center" *ngIf="article">
     <div class="col-6 title-info">
-      <h1>{{article.title}}</h1>
-      <div class="author-article-info d-flex justify-content-between align-items-start">
+      <h1>{{ article.title }}</h1>
+      <div
+        class="author-article-info d-flex justify-content-between align-items-start"
+      >
         <div class="d-flex gap-3">
-          <img class="rounded-circle" [src]="article.authorImage ? article.authorImage : '../../assets/images/user-placeholder.jpg'" alt="Article author." role="button" [routerLink]="'/' + article.authorSlug">
+          <img
+            class="rounded-circle"
+            [src]="
+              article.authorImage
+                ? article.authorImage
+                : '../../assets/images/user-placeholder.jpg'
+            "
+            alt="Article author."
+            role="button"
+            [routerLink]="'/' + article.authorSlug"
+          />
           <div class="info">
-            <a class="author-name text-decoration-none" [routerLink]="'/' + article.authorSlug">
-              {{article.authorName}}
+            <a
+              class="author-name text-decoration-none"
+              [routerLink]="'/' + article.authorSlug"
+            >
+              {{ article.authorName }}
             </a>
             <div class="date-read-time d-flex align-items-center">
-            <p class="date">{{ article.createdAt | formatDate }}</p>
-            <p class="mx-1">-</p>
-            <p class="read-time">{{ article.readTime }} min read</p>
-          </div>
+              <p class="date">{{ article.createdAt | formatDate }}</p>
+              <p class="mx-1">-</p>
+              <p class="read-time">{{ article.readTime }} min read</p>
+            </div>
           </div>
         </div>
-        <button *ngIf="isOwner()" class="btn btn-sm btn-outline-dark" (click)="editArticle()">Edit</button>
+        <button
+          *ngIf="isOwner()"
+          class="btn btn-sm btn-outline-dark"
+          (click)="editArticle()"
+        >
+          Edit
+        </button>
       </div>
-        <div class="claps-comments-topics d-flex justify-content-between align-items-center">
-          <div *ngIf="currentUser.id != article.author_id" class="d-flex gap-4">
-            <div class="d-flex gap-1">
-              <button type="button" (click)="onClapClick()" class="clap-btn">
-                <img src="../../assets/svg/clap.svg" alt="Two hands clapping icon.">
-              </button>
+      <div
+        class="claps-comments-topics d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex gap-4">
+          <div *ngIf="currentUser.id != article.author_id" class="d-flex gap-1">
+            <button type="button" (click)="onClapClick()" class="clap-btn">
+              <img
+                src="../../assets/svg/clap.svg"
+                alt="Two hands clapping icon."
+              />
+            </button>
 
-              <p>
-                {{ article.claps }}
-              </p>
-            </div>
-            <div class="d-flex gap-1">
-            <img src="../../assets/svg/comment.svg" alt="Comments icon.">
-              <p>
-                0
-              </p>
-            </div>
+            <p>
+              {{ article.claps }}
+            </p>
           </div>
-          <div class="">
-            <img src="../../assets/svg/bookmark.svg" alt="Add bookmark icon.">
+          <div class="d-flex gap-1">
+            <img src="../../assets/svg/comment.svg" alt="Comments icon." />
+            <p>0</p>
           </div>
         </div>
-        <div class="topics-container mt-3" *ngIf="article.topics && article.topics.length > 0">
-          <div class="d-flex gap-2 flex-wrap">
-            <a
-              *ngFor="let topic of article.topics"
-              class="topic-chip text-decoration-none"
-              [routerLink]="'/'"
-              [queryParams]="{ topic: topic }"
-            >
-              {{ topic }}
-            </a>
-          </div>
+        <div class="">
+          <img src="../../assets/svg/bookmark.svg" alt="Add bookmark icon." />
         </div>
+      </div>
+      <div
+        class="topics-container mt-3"
+        *ngIf="article.topics && article.topics.length > 0"
+      >
+        <div class="d-flex gap-2 flex-wrap">
+          <a
+            *ngFor="let topic of article.topics"
+            class="topic-chip text-decoration-none"
+            [routerLink]="'/'"
+            [queryParams]="{ topic: topic }"
+          >
+            {{ topic }}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="row content">
     <div class="col-6 offset-3" *ngIf="article">
-      <img [src]="article.image" alt="Article image" class="img-fluid mb-4" *ngIf="article.image">
+      <img
+        [src]="article.image"
+        alt="Article image"
+        class="img-fluid mb-4"
+        *ngIf="article.image"
+      />
       <div [innerHTML]="article.content"></div>
     </div>
   </div>

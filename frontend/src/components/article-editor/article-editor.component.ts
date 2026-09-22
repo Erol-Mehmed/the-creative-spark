@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-article-editor',
   templateUrl: './article-editor.component.html',
-  styleUrls: ['./article-editor.component.scss']
+  styleUrls: ['./article-editor.component.scss'],
 })
 export class ArticleEditorComponent implements OnInit {
   form: FormGroup;
@@ -49,14 +49,16 @@ export class ArticleEditorComponent implements OnInit {
   }
 
   loadTopics() {
-    this.http.get<Array<{ id: number; name: string }>>('/api/topics').subscribe({
-      next: (topics) => {
-        this.topics = topics;
-      },
-      error: () => {
-        console.error('Failed to load topics');
-      },
-    });
+    this.http
+      .get<Array<{ id: number; name: string }>>('/api/topics')
+      .subscribe({
+        next: (topics) => {
+          this.topics = topics;
+        },
+        error: () => {
+          console.error('Failed to load topics');
+        },
+      });
   }
 
   toggleTopic(topicName: string) {
@@ -78,7 +80,9 @@ export class ArticleEditorComponent implements OnInit {
       next: (article: any) => {
         const articleTopics =
           article.topics && Array.isArray(article.topics)
-            ? article.topics.map((t: any) => (typeof t === 'string' ? t : t.name))
+            ? article.topics.map((t: any) =>
+                typeof t === 'string' ? t : t.name,
+              )
             : [];
 
         this.form.patchValue({
@@ -113,7 +117,7 @@ export class ArticleEditorComponent implements OnInit {
       error: (err) => {
         this.error = err?.error?.message || 'Upload failed.';
       },
-      complete: () => this.uploading = false,
+      complete: () => (this.uploading = false),
     });
   }
 
@@ -141,19 +145,21 @@ export class ArticleEditorComponent implements OnInit {
     }
 
     if (this.isEditing && this.articleSlug) {
-      this.http.patch(`/api/articles/${this.articleSlug}`, formValue).subscribe({
-        next: (article: any) => {
-          if (article?.authorSlug && article?.slug) {
-            this.router.navigate(['/', article.authorSlug, article.slug]);
-            return;
-          }
-          this.router.navigate(['/']);
-        },
-        error: (err) => {
-          this.error = err?.error?.message || 'Save failed.';
-          this.saving = false;
-        },
-      });
+      this.http
+        .patch(`/api/articles/${this.articleSlug}`, formValue)
+        .subscribe({
+          next: (article: any) => {
+            if (article?.authorSlug && article?.slug) {
+              this.router.navigate(['/', article.authorSlug, article.slug]);
+              return;
+            }
+            this.router.navigate(['/']);
+          },
+          error: (err) => {
+            this.error = err?.error?.message || 'Save failed.';
+            this.saving = false;
+          },
+        });
     } else {
       this.http.post('/api/articles', formValue).subscribe({
         next: () => {

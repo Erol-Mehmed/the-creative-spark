@@ -8,7 +8,6 @@ import { UserService } from 'src/core/services/user.service';
   templateUrl: './author.component.html',
   styleUrls: ['./author.component.scss'],
 })
-
 export class AuthorComponent implements OnInit {
   author: Author = {
     name: '',
@@ -40,11 +39,11 @@ export class AuthorComponent implements OnInit {
         this.userService.setCurrentUser(user);
       },
     });
-  };
+  }
 
   setAuthorInfo($event: Author) {
     this.author = $event;
-  };
+  }
 
   isOwner() {
     const username = this.route.snapshot.params['username'];
@@ -67,7 +66,9 @@ export class AuthorComponent implements OnInit {
       return;
     }
 
-    const name = `${user.first_name || ''} ${user.last_name || ''}`.trim() || user.username;
+    const name =
+      `${user.first_name || ''} ${user.last_name || ''}`.trim() ||
+      user.username;
     this.author = {
       ...this.author,
       name,

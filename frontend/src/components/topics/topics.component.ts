@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-topics',
   templateUrl: './topics.component.html',
-  styleUrls: ['./topics.component.scss']
+  styleUrls: ['./topics.component.scss'],
 })
 export class TopicsComponent implements OnInit {
   @Input() selectedTopic: string | null = null;
@@ -15,14 +15,16 @@ export class TopicsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<Array<{ id: number; name: string }>>('/api/topics').subscribe({
-      next: (topics) => {
-        this.topics = topics;
-      },
-      error: () => {
-        this.topics = [];
-      },
-    });
+    this.http
+      .get<Array<{ id: number; name: string }>>('/api/topics')
+      .subscribe({
+        next: (topics) => {
+          this.topics = topics;
+        },
+        error: () => {
+          this.topics = [];
+        },
+      });
   }
 
   selectTopic(topic: string | null): void {

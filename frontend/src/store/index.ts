@@ -1,5 +1,5 @@
-import { ActionReducerMap, createReducer, on } from "@ngrx/store";
-import { setModalVersion } from "./actions";
+import { ActionReducerMap, createReducer, on } from '@ngrx/store';
+import { setModalVersion } from './actions';
 
 export interface IMainState {
   currentModalVersion: string;
@@ -10,17 +10,17 @@ interface IAppState {
 }
 
 const mainInitialState: IMainState = {
-  currentModalVersion: ''
+  currentModalVersion: '',
 };
 
-const MainReducer = createReducer<IMainState> (
+const MainReducer = createReducer<IMainState>(
   mainInitialState,
   on(setModalVersion, (state, action): IMainState => {
     const { currentModalVersion } = action;
     return { ...state, currentModalVersion: currentModalVersion };
-  })
+  }),
 );
 
 export const reducers: ActionReducerMap<IAppState> = {
-  main: MainReducer
+  main: MainReducer,
 };

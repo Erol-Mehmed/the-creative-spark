@@ -6,13 +6,7 @@ import { UploadService } from './services/upload.service';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
-  providers: [
-    UserService,
-    UploadService,
-    appInterceptorProvider,
-  ],
+  imports: [CommonModule],
+  providers: [UserService, UploadService, appInterceptorProvider],
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -10,7 +10,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import Author from '../../shared/interfaces/author';
-import { FormatDatePipe } from "../../shared/pipes/format-date.pipe";
+import { FormatDatePipe } from '../../shared/pipes/format-date.pipe';
 
 @Component({
   selector: 'app-articles-list',
@@ -22,7 +22,7 @@ export class ArticlesListComponent implements OnInit, OnChanges {
   constructor(
     private http: HttpClient,
     private formatDatePipe: FormatDatePipe,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   @Input() authorArticles: boolean = false;
@@ -53,14 +53,14 @@ export class ArticlesListComponent implements OnInit, OnChanges {
     if (this.currentData) {
       this.displayedArticles = this.currentData.slice(
         0,
-        (this.articlesToShow += 10)
+        (this.articlesToShow += 10),
       );
     }
   }
 
   getArticles() {
     let endpoint = '';
-    
+
     if (this.authorArticles) {
       endpoint = `/api/author?username=${this.route.snapshot.params['username']}`;
     } else if (this.selectedTopic) {

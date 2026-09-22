@@ -9,7 +9,9 @@
         border-radius: 16px;
         background: var(--surface);
         box-shadow: var(--shadow-sm);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
 
         &:hover {
           transform: translateY(-1px);
@@ -68,8 +70,8 @@
             .badge {
               padding: 6px 12px;
               font-size: 14px;
-              background: #F2F2F2;
-              border: 1px solid #F2F2F2;
+              background: #f2f2f2;
+              border: 1px solid #f2f2f2;
 
               &:hover {
                 background: #dbdada;

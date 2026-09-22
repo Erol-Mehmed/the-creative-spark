@@ -100,7 +100,9 @@
         cursor: pointer;
 
         &:hover {
-          text-shadow: 0 0 .65px var(--green-2), 0 0 .65px var(--green-2);
+          text-shadow:
+            0 0 0.65px var(--green-2),
+            0 0 0.65px var(--green-2);
         }
 
         &:active {
