@@ -24,6 +24,7 @@ import { ProfileEditComponent } from 'src/components/profile-edit/profile-edit.c
 import { ArticleEditorComponent } from 'src/components/article-editor/article-editor.component';
 import { NgOptimizedImage } from '@angular/common';
 import { SharedModule } from 'src/shared/shared/shared.module';
+import { LucideAngularModule } from 'lucide-angular';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SharedModule } from 'src/shared/shared/shared.module';
     InfiniteScrollModule,
     NgOptimizedImage,
     SharedModule,
+    LucideAngularModule,
   ],
   bootstrap: [AppComponent],
 })

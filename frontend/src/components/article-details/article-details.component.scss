@@ -88,6 +88,20 @@
           border: none;
           padding: 0;
           background: none;
+
+          &:hover {
+            svg {
+              stroke: #111827;
+            }
+          }
+
+          &:active {
+            transform: translateY(1px);
+
+            svg {
+              stroke: #080b11;
+            }
+          }
         }
       }
     }

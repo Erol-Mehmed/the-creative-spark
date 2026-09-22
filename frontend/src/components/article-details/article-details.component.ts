@@ -20,7 +20,6 @@ export class ArticleDetailsComponent implements OnInit {
   ) {}
 
   article: any = null;
-
   currentUser: any = null;
   loading: boolean = true;
   article_slug: string = '';
