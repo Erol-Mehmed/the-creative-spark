@@ -56,8 +56,8 @@ export class ArticleDetailsComponent implements OnInit {
 
   onClapClick() {
     this.http.post(`/api/articles/${(this.article_slug)}/clap`, "").subscribe({
-      next: (data: any) => {
-        return data.claps;
+      next: (claps: any) => {
+        this.article.claps = claps;
       },
       error: (err) => {
         console.error(err);

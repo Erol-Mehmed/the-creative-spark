@@ -214,5 +214,12 @@ class ArticleService:
         return max(1, round(read_time))
 
     @staticmethod
-    def clap(slug: str):
-        return ArticleRepository.clap(slug)
+    def clap(slug: str, user_id: int):
+        article = ArticleService.get_by_slug(slug)
+
+        if article.author_id == user_id:
+            raise ArticlePermissionDeniedError(
+                "Cannot clap, you are the owner of this article."
+            )
+
+        return ArticleRepository.clap(article)

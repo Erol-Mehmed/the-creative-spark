@@ -263,7 +263,10 @@ class ArticleClapResource(Resource):
     @jwt_required()
     def post(self, slug):
         try:
-            claps = ArticleService.clap(slug)
+            claps = ArticleService.clap(
+                slug,
+                int(get_jwt_identity()),
+            )
 
             return claps, 200
 
