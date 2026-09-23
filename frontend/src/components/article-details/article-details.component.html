@@ -43,7 +43,7 @@
         class="claps-comments-topics d-flex justify-content-between align-items-center"
       >
         <div class="d-flex gap-4">
-          <div *ngIf="currentUser.id != article.author_id" class="d-flex gap-1">
+          <div *ngIf="currentUser?.id && (currentUser?.id != article.author_id)" class="d-flex gap-1">
             <button type="button" (click)="onClapClick()" class="clap-btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
